@@ -5,7 +5,7 @@
 
 # Default version ID to use when emitting Maven artifacts:
 # All artifacts are currently pegged on a single version ID.
-maven_artifact_version = "3.0.0-SNAPSHOT"
+maven_artifact_version = "3.0.0-indix-SNAPSHOT"
 
 # --------------------------------------------------------------------------------------------------
 # Python base libraries
@@ -278,6 +278,7 @@ dropwizard_metrics_core = "io.dropwizard.metrics:metrics-core:3.1.0"
 dropwizard_metrics_jvm = "io.dropwizard.metrics:metrics-jvm:3.1.0"
 
 latency_utils = "org.latencyutils:LatencyUtils:2.0.2"
+scala_parser_combinator = "org.scala-lang.modules:scala-parser-combinators_2.11:1.0.5"
 
 # Maven dependencies for tests:
 easymock = "org.easymock:easymock:3.0"
@@ -1086,6 +1087,7 @@ java_library(
         maven(guava),
         maven(jsr305),
         maven(slf4j_api),
+	maven(scala_parser_combinator),
 
         "//org/kiji/schema:kiji-schema-avro",
         "//org/kiji/annotations:annotations",

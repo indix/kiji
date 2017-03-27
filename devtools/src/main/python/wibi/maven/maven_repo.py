@@ -15,12 +15,15 @@ import xml.etree.ElementTree as etree
 from base import base
 
 from wibi.maven import artifact
-
+import ssl
 
 FLAGS = base.FLAGS
 DEFAULT = base.DEFAULT
 LOG_LEVEL = base.LOG_LEVEL
 
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
 
 class Error(Exception):
     """Errors used in this module."""
@@ -437,7 +440,7 @@ class RemoteRepository(object):
         logging.log(LOG_LEVEL.DEBUG_VERBOSE, "Opening %r", file_url)
         http_req = urllib.request.Request(url=file_url)
         try:
-            http_reply = urllib.request.urlopen(http_req)
+            http_reply = urllib.request.urlopen(http_req, context=ctx)
             return (http_reply, md5, sha1)
         except urllib.error.HTTPError as err:
             if err.code == 404:
