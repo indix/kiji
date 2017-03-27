@@ -5,7 +5,7 @@
 
 # Default version ID to use when emitting Maven artifacts:
 # All artifacts are currently pegged on a single version ID.
-maven_artifact_version = "3.0.0-indix-SNAPSHOT"
+maven_artifact_version = "3.0.1-indix-SNAPSHOT"
 
 # --------------------------------------------------------------------------------------------------
 # Python base libraries
@@ -245,7 +245,7 @@ fasterxml_jackson_module_jaxb_annotations = "com.fasterxml.jackson.module:jackso
 fasterxml_jackson_core = "com.fasterxml.jackson.core:jackson-core:2.3.3"
 fasterxml_jackson_databind = "com.fasterxml.jackson.core:jackson-databind:2.3.3"
 fasterxml_jackson_annotations = "com.fasterxml.jackson.core:jackson-annotations:2.3.3"
-fasterxml_jackson_module_scala = "com.fasterxml.jackson.module:jackson-module-scala_2.10:2.3.3"
+fasterxml_jackson_module_scala = "com.fasterxml.jackson.module:jackson-module-scala_2.11:2.4.0"
 joda_convert = "org.joda:joda-convert:1.3.1"
 joda_time = "joda-time:joda-time:2.3"
 jsr305 = "com.google.code.findbugs:jsr305:1.3.9"
@@ -254,15 +254,15 @@ netty = "io.netty:netty:3.9.0.Final"
 scala_compiler = "org.scala-lang:scala-compiler:2.10.4"
 scala_jline = "org.scala-lang:jline:2.10.4"
 scala_reflect = "org.scala-lang:scala-reflect:2.10.4"
-scalatest = "org.scalatest:scalatest_2.10:2.0"
-scalding_args = "com.twitter:scalding-args_2.10:0.9.1"
-scalding_core = "com.twitter:scalding-core_2.10:0.9.1"
-scallop = "org.rogach:scallop_2.10:0.9.5"
+scalatest = "org.scalatest:scalatest_2.11:2.1.3"
+scalding_args = "com.twitter:scalding-args_2.11:0.13.1"
+scalding_core = "com.twitter:scalding-core_2.11:0.13.1"
+scallop = "org.rogach:scallop_2.11:0.9.5"
 slf4j_api = "org.slf4j:slf4j-api:1.7.5"
 slf4j_log4j12 = "org.slf4j:slf4j-log4j12:1.7.5"
 spark_core = "org.apache.spark:spark-core_2.10:1.2.0-cdh5.3.1"
 spark_mllib = "org.apache.spark:spark-mllib_2.10:1.2.0-cdh5.3.1"
-specs2 = "org.specs2:specs2_2.10:2.3.8"
+specs2 = "org.specs2:specs2_2.11:2.3.11"
 solr_core = "org.apache.solr:solr-core:4.10.3"
 solr_solrj = "org.apache.solr:solr-solrj:4.10.3"
 

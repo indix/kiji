@@ -27,7 +27,7 @@ python_versions = {"3.5.2"}
 
 
 avro_version = "1.7.6"
-scala_version = "2.10.4"
+scala_version = "2.11.8"
 checkstyle_version = "6.1.1"
 scalastyle_version = "0.6.0"
 
