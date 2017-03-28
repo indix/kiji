@@ -5,7 +5,7 @@
 
 # Default version ID to use when emitting Maven artifacts:
 # All artifacts are currently pegged on a single version ID.
-maven_artifact_version = "3.0.1-indix-SNAPSHOT"
+maven_artifact_version = "3.0.2-indix-SNAPSHOT"
 
 # --------------------------------------------------------------------------------------------------
 # Python base libraries

@@ -298,10 +298,10 @@ public class TestCSVBulkImporter extends KijiClientTest {
     final KijiRowScanner scanner = mReader.getScanner(KijiDataRequest.create("primitives"));
     KijiRowData row = scanner.iterator().next();
     assertEquals(false, row.getMostRecentValue("primitives", "boolean"));
-    assertEquals(0, row.getMostRecentValue("primitives", "int"));
-    assertEquals(1L, row.getMostRecentValue("primitives", "long"));
-    assertEquals(1.0f, row.getMostRecentValue("primitives", "float"));
-    assertEquals(2.0d, row.getMostRecentValue("primitives", "double"));
+    assertEquals(Integer.valueOf(0), row.getMostRecentValue("primitives", "int"));
+    assertEquals(Long.valueOf(1L), row.getMostRecentValue("primitives", "long"));
+    assertEquals(Float.valueOf(1.0f), row.getMostRecentValue("primitives", "float"));
+    assertEquals(Double.valueOf(2.0d), row.getMostRecentValue("primitives", "double"));
     assertEquals("Hello", row.getMostRecentValue("primitives", "string").toString());
     scanner.close();
   }

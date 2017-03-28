@@ -71,10 +71,10 @@ public class TestFinalColumns extends KijiClientTest {
         final KijiTableReader reader = table.openTableReader();
         try {
           final KijiRowData row = reader.get(eid, KijiDataRequest.create("family"));
-          assertEquals(314159, row.getMostRecentValue("family", "int"));
+          assertEquals(Integer.valueOf(314159), row.getMostRecentValue("family", "int"));
 
           // Ensures the long value has not been overwritten:
-          assertEquals(314159L, row.getMostRecentValue("family", "long"));
+          assertEquals(Long.valueOf(314159L), row.getMostRecentValue("family", "long"));
         } finally {
           reader.close();
         }
