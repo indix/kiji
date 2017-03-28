@@ -127,7 +127,7 @@ object TupleProfiling {
       (histogramConfig: HistogramConfig, tuple: T)
       (implicit uniqueIdCont: UniqueID): T = {
     // Serialize the tuple using kryo.
-    val flowProcess: FlowProcess[_] = RuntimeStats.getFlowProcessForUniqueId(uniqueIdCont.get)
+    val flowProcess: FlowProcess[_] = RuntimeStats.getFlowProcessForUniqueId(uniqueIdCont)
     val kryo: Kryo = flowProcess.getConfigCopy match {
       case hadoopConfiguration: Configuration => {
         new KryoSerialization(hadoopConfiguration).populatedKryo()

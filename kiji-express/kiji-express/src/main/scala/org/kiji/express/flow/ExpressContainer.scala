@@ -102,15 +102,15 @@ abstract class ExpressContainer(
    */
   implicit def read(src : Source) : Pipe = src.read
 
-  implicit def pipeTExtensions(pipe : Pipe) : PipeTExtensions = new PipeTExtensions(pipe)
+  implicit def pipeTExtensions(pipe : Pipe) : PipeTExtensions = new PipeTExtensions(pipe, flowDef, mode)
 
   implicit def mappableToTypedPipe[T](src: Mappable[T])
         (implicit flowDef: FlowDef, mode: Mode): TypedPipe[T] =
-    TypedPipe.from(src)(flowDef, mode)
+    TypedPipe.from(src)
 
   implicit def sourceToTypedPipe[T](src: TypedSource[T])
         (implicit flowDef: FlowDef, mode: Mode): TypedPipe[T] =
-    TypedPipe.from(src)(flowDef, mode)
+    TypedPipe.from(src)
 }
 
 object ExpressContainer {

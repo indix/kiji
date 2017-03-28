@@ -96,7 +96,7 @@ private[express] trait PipeConversions {
   implicit def typedSource2TypedPipe[T](
       source: TypedKijiSource[T])(
       implicit flowDef: FlowDef,
-      mode: Mode): TypedPipe[ExpressResult] = TypedPipe.from(source)(flowDef, mode)
+      mode: Mode): TypedPipe[ExpressResult] = TypedPipe.from(source)
 
   /**
    * Pimp my class to allow TypedPipe to have an .thenDo function, the same as RichPipe.

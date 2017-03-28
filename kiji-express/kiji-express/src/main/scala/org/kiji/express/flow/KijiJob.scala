@@ -27,18 +27,6 @@ import java.util.Properties
 import scala.collection.JavaConverters.asScalaIteratorConverter
 import scala.collection.JavaConverters.collectionAsScalaIterableConverter
 import scala.collection.JavaConverters.mapAsScalaMapConverter
-
-import cascading.flow.Flow
-import cascading.flow.FlowListener
-import cascading.flow.hadoop.util.HadoopUtil
-import cascading.pipe.Checkpoint
-import cascading.pipe.Pipe
-import cascading.pipe.assembly.AggregateBy
-import cascading.stats.FlowStepStats
-import cascading.stats.hadoop.HadoopStepStats
-import cascading.stats.local.LocalStepStats
-import cascading.tap.Tap
-import cascading.tuple.collect.SpillableProps
 import com.aphyr.riemann.Proto
 import com.aphyr.riemann.Proto.Attribute
 import com.aphyr.riemann.Proto.Event
@@ -62,7 +50,6 @@ import org.apache.hadoop.mapreduce.Counter
 import org.apache.hadoop.security.UserGroupInformation
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-
 import org.kiji.annotations.ApiAudience
 import org.kiji.annotations.ApiStability
 import org.kiji.annotations.Inheritance
@@ -79,6 +66,18 @@ import org.kiji.express.flow.util.PipeConversions
 import org.kiji.express.flow.util.ResourcesShutdown
 import org.kiji.schema.Kiji
 import org.kiji.schema.KijiURI
+
+import cascading.flow.FlowListener
+import cascading.flow.Flow
+import cascading.tap.Tap
+import com.twitter.scalding._
+import cascading.pipe._
+import cascading.flow.hadoop.util.HadoopUtil
+import cascading.tuple.collect.SpillableProps
+import cascading.pipe.assembly.AggregateBy
+import cascading.stats.FlowStepStats
+import cascading.stats.hadoop.HadoopStepStats
+import cascading.stats.local.LocalStepStats
 
 /**
  * KijiJob is KijiExpress's extension of Scalding's `Job`, and users should extend it when writing
@@ -99,6 +98,7 @@ class KijiJob(args: Args)
 
   /** FlowListener for collecting flowCounters from this Job. */
   private val counterListener: CounterListener = new CounterListener
+  val uniqueId = UniqueID.getIDFor(flowDef)
 
   /** Implicit kijiArgs def for use by ExpressContainerFactory. */
   implicit final protected def kijiArgs: Args = args
@@ -442,6 +442,7 @@ class KijiJob(args: Args)
       flowStepCountersIterable :Iterable[Map[String, Long]]
   ) {
     val expressJobHistoryTable: ExpressJobHistoryKijiTable = ExpressJobHistoryKijiTable(kiji)
+
     try {
       logger.info("ExpressJobHistory.jobId = {}", uniqueId.get)
       expressJobHistoryTable.recordJob(

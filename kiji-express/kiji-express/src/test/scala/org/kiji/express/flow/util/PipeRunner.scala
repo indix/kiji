@@ -22,12 +22,6 @@ package org.kiji.express.flow.util
 import java.lang.reflect.Constructor
 
 import scala.collection.mutable
-
-import cascading.flow.Flow
-import cascading.pipe.Pipe
-import cascading.tuple.Fields
-import cascading.tuple.Tuple
-import cascading.tuple.TupleEntry
 import com.twitter.scalding.Args
 import com.twitter.scalding.Job
 import com.twitter.scalding.JobTest
@@ -37,6 +31,14 @@ import com.twitter.scalding.Tsv
 import com.twitter.scalding.TupleConverter
 import com.twitter.scalding.TupleSetter
 import com.twitter.scalding.Write
+import com.twitter.scalding.Config
+import cascading.tuple.Tuple
+import cascading.tuple.TupleEntry
+import cascading.flow.Flow
+import cascading.tuple.Fields
+import cascading.pipe._
+
+import scala.util.Success
 
 /**
  * Module for providing a test framework around testing Express pipes.  Allows testing of pipes
@@ -112,7 +114,11 @@ object PipeRunner {
 
     class InnerJob(args: Args) extends Job(args) {
       override def buildFlow: Flow[_]  = {
-        mode.newFlowConnector(config).connect(
+        val fromLegacy = Config.tryFrom(config) match{
+          case Success(config) => config
+          case _ => Config.empty
+        }
+        mode.newFlowConnector(fromLegacy).connect(
           pipe.getName, source.createTap(Read), sink.createTap(Write), pipe)
       }
     }

@@ -19,7 +19,7 @@
 
 package org.kiji.express.flow
 
-import scala.collection.JavaConversions
+import scala.collection.JavaConversions._
 
 import cascading.tuple.Fields
 import com.twitter.scalding.Args
@@ -108,7 +108,7 @@ class WriterSchemaSuite extends KijiClientTest with KijiSuite {
 
   def arrayVerifier[T](input: T, retrieved: T): Unit = {
     assert(retrieved.isInstanceOf[GenericData.Array[_]])
-    val ret = JavaConversions.JListWrapper(retrieved.asInstanceOf[GenericData.Array[_]]).toSeq
+    val ret = retrieved.asInstanceOf[GenericData.Array[_]].toSeq
     assert(input.asInstanceOf[Iterable[_]].toSeq === ret)
   }
 
