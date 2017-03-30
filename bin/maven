@@ -67,7 +67,7 @@ wkspc=$(dirname "$(dirname "${wkspc}")")
 mkdir -p "${wkspc}"/output/temp
 venv_root="${wkspc}"/output/temp/bootstrap.python3.4
 if [ ! -d "${venv_root}" ]; then
-  pyvenv-3.4 "${venv_root}"
+  pyvenv "${venv_root}"
 fi
 set +o nounset   # Virtualenv activate scripts access unbound variables.
 source "${venv_root}"/bin/activate

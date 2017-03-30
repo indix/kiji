@@ -388,17 +388,17 @@ generated_pom(
 # )
 
 # DEPRECATED. Uncomment if you need to use cdh4.
-# java_library(
-#     name="//org/kiji/platforms:cdh4.2-platform",
-#     deps=[
-#         maven("org.apache.hadoop:hadoop-client:2.0.0-mr1-cdh4.2.2"),
-#         maven("org.apache.hadoop:hadoop-core:2.0.0-mr1-cdh4.2.2"),
-#         maven("org.apache.hbase:hbase:0.94.2-cdh4.2.2"),
-#         maven("org.apache.zookeeper:zookeeper:3.4.5-cdh4.2.2"),
-#         maven("org.apache.curator:curator-recipes:2.4.1"),
-#     ],
-#     provides=["kiji_platform"],
-# )
+java_library(
+    name="//org/kiji/platforms:cdh4.2-platform",
+    deps=[
+        maven("org.apache.hadoop:hadoop-client:2.0.0-mr1-cdh4.2.2"),
+        maven("org.apache.hadoop:hadoop-core:2.0.0-mr1-cdh4.2.2"),
+        maven("org.apache.hbase:hbase:0.94.2-cdh4.2.2"),
+        maven("org.apache.zookeeper:zookeeper:3.4.5-cdh4.2.2"),
+        maven("org.apache.curator:curator-recipes:2.4.1"),
+    ],
+    provides=["kiji_platform"],
+)
 
 # DEPRECATED. Uncomment if you need to use cdh4.
 # java_library(
@@ -573,16 +573,15 @@ java_library(
 #     provides=["kiji_platform"],
 # )
 
-# DEPRECATED. Uncomment if you need to use cdh4.
-# java_library(
-#     name="//org/kiji/platforms:cdh4.2-test-platform",
-#     deps=["//org/kiji/platforms:cdh4.2-platform"],
-#     deps=[
-#         maven("org.apache.hadoop:hadoop-minicluster:2.0.0-mr1-cdh4.2.2"),
-#         maven("org.apache.curator:curator-test:2.4.1"),
-#     ],
-#     provides=["kiji_platform"],
-# )
+java_library(
+    name="//org/kiji/platforms:cdh4.2-test-platform",
+    deps=[
+        "//org/kiji/platforms:cdh4.2-platform",
+        maven("org.apache.hadoop:hadoop-minicluster:2.0.0-mr1-cdh4.2.2"),
+        maven("org.apache.curator:curator-test:2.4.1"),
+    ],
+    provides=["kiji_platform"],
+)
 
 # DEPRECATED. Uncomment if you need to use cdh4.
 # java_library(
@@ -1051,17 +1050,16 @@ java_library(
 #     ],
 # )
 # DEPRECATED. Uncomment if you need to use cdh4.
-# java_library(
-#     name="//org/kiji/schema:cdh42mr1-bridge",
-#     sources=["//kiji-schema/cdh42mr1-bridge/src/main/java"],
-#     resources=["//kiji-schema/cdh42mr1-bridge/src/main/resources/"],
-#     deps=[
-#         "//org/kiji/annotations:annotations",
-#         "//org/kiji/schema:schema-platform-api",
-#
-#         dynamic(kiji_platform="//org/kiji/platforms:cdh4.2-platform"),
-#     ],
-# )
+java_library(
+    name="//org/kiji/schema:cdh42mr1-bridge",
+    sources=["//kiji-schema/cdh42mr1-bridge/src/main/java"],
+    resources=["//kiji-schema/cdh42mr1-bridge/src/main/resources/"],
+    deps=[
+        "//org/kiji/annotations:annotations",
+        "//org/kiji/schema:schema-platform-api",
+        dynamic(kiji_platform="//org/kiji/platforms:cdh4.2-platform"),
+    ],
+)
 
 java_library(
     name="//org/kiji/schema:cdh5-bridge",
@@ -1147,14 +1145,14 @@ java_binary(
 #     ],
 # )
 # DEPRECATED. Uncomment if you need to use cdh4.
-# java_binary(
-#     name="//org/kiji/schema:kiji-cdh4.2",
-#     main_class="org.kiji.schema.tools.KijiToolLauncher",
-#     deps=[
-#         "//org/kiji/schema:kiji-schema",
-#         dynamic(kiji_platform="//org/kiji/platforms:cdh4.2-platform"),
-#     ],
-# )
+java_binary(
+    name="//org/kiji/schema:kiji-cdh4.2",
+    main_class="org.kiji.schema.tools.KijiToolLauncher",
+    deps=[
+        "//org/kiji/schema:kiji-schema",
+        dynamic(kiji_platform="//org/kiji/platforms:cdh4.2-platform"),
+    ],
+)
 # DEPRECATED. Uncomment if you need to use cdh4.
 # java_binary(
 #     name="//org/kiji/schema:kiji-cdh4.3",
