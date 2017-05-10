@@ -20,7 +20,7 @@ maven_repositories = [
 ]
 
 # Supported Java versions:
-java_versions = {"1.8.0_121"}
+java_versions = {"1.8.0_121", "1.7.0_80"}
 
 # Supported Python versions:
 python_versions = {"3.5.2"}

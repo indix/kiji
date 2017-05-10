@@ -351,7 +351,7 @@ scala_library(
         "//fake-hbase/src/main/scala",
     ],
     deps=[
-        dynamic(kiji_platform="//org/kiji/platforms:cdh5.0-platform"),
+        dynamic(kiji_platform="//org/kiji/platforms:cdh5.3-platform"),
         maven(easymock),
     ],
 )
@@ -388,17 +388,17 @@ generated_pom(
 # )
 
 # DEPRECATED. Uncomment if you need to use cdh4.
-java_library(
-    name="//org/kiji/platforms:cdh4.2-platform",
-    deps=[
-        maven("org.apache.hadoop:hadoop-client:2.0.0-mr1-cdh4.2.2"),
-        maven("org.apache.hadoop:hadoop-core:2.0.0-mr1-cdh4.2.2"),
-        maven("org.apache.hbase:hbase:0.94.2-cdh4.2.2"),
-        maven("org.apache.zookeeper:zookeeper:3.4.5-cdh4.2.2"),
-        maven("org.apache.curator:curator-recipes:2.4.1"),
-    ],
-    provides=["kiji_platform"],
-)
+#java_library(
+#    name="//org/kiji/platforms:cdh4.2-platform",
+#    deps=[
+#        maven("org.apache.hadoop:hadoop-client:2.0.0-mr1-cdh4.2.2"),
+#        maven("org.apache.hadoop:hadoop-core:2.0.0-mr1-cdh4.2.2"),
+#        maven("org.apache.hbase:hbase:0.94.2-cdh4.2.2"),
+#        maven("org.apache.zookeeper:zookeeper:3.4.5-cdh4.2.2"),
+#        maven("org.apache.curator:curator-recipes:2.4.1"),
+#    ],
+#    provides=["kiji_platform"],
+#)
 
 # DEPRECATED. Uncomment if you need to use cdh4.
 # java_library(
@@ -426,50 +426,50 @@ java_library(
 #     provides=["kiji_platform"],
 # )
 
-java_library(
-    name="//org/kiji/platforms:cdh5.0-platform",
-    deps=[
-        maven("org.apache.hadoop:hadoop-mapreduce-client-jobclient:2.3.0-cdh5.0.3"),
-        maven("org.apache.hadoop:hadoop-mapreduce-client-app:2.3.0-cdh5.0.3"),
-        maven("org.apache.hadoop:hadoop-common:2.3.0-cdh5.0.3"),
-        maven("org.apache.hbase:hbase-client:0.96.1.1-cdh5.0.3"),
-        maven("org.apache.hbase:hbase-server:0.96.1.1-cdh5.0.3"),
-        maven("org.apache.zookeeper:zookeeper:3.4.5-cdh5.0.3"),
-        maven("org.apache.curator:curator-recipes:2.4.1"),
-    ],
-    maven_exclusions=[
-        # Globally exclude Hadoop MR1:
-        "org.apache.hadoop:hadoop-core:*:*:*",
-        "org.apache.hadoop:hadoop-hdfs:test-jar:*:*",
-    ],
-    provides=["kiji_platform"],
-)
+#java_library(
+#    name="//org/kiji/platforms:cdh5.0-platform",
+#    deps=[
+#        maven("org.apache.hadoop:hadoop-mapreduce-client-jobclient:2.3.0-cdh5.0.3"),
+#        maven("org.apache.hadoop:hadoop-mapreduce-client-app:2.3.0-cdh5.0.3"),
+#        maven("org.apache.hadoop:hadoop-common:2.3.0-cdh5.0.3"),
+#        maven("org.apache.hbase:hbase-client:0.96.1.1-cdh5.0.3"),
+#        maven("org.apache.hbase:hbase-server:0.96.1.1-cdh5.0.3"),
+#        maven("org.apache.zookeeper:zookeeper:3.4.5-cdh5.0.3"),
+#        maven("org.apache.curator:curator-recipes:2.4.1"),
+#    ],
+#    maven_exclusions=[
+#        # Globally exclude Hadoop MR1:
+#        "org.apache.hadoop:hadoop-core:*:*:*",
+#        "org.apache.hadoop:hadoop-hdfs:test-jar:*:*",
+#    ],
+#    provides=["kiji_platform"],
+#)
 
-java_library(
-    name="//org/kiji/platforms:cdh5.1-platform",
-    deps=[
-        "//org/kiji/deps:jackson",
-
-        avro,
-        maven(guava),
-        maven(jsr305),
-        maven(slf4j_api),
-
-        maven("org.apache.hadoop:hadoop-mapreduce-client-jobclient:2.3.0-cdh5.1.3"),
-        maven("org.apache.hadoop:hadoop-mapreduce-client-app:2.3.0-cdh5.1.3"),
-        maven("org.apache.hadoop:hadoop-common:2.3.0-cdh5.1.3"),
-        maven("org.apache.hbase:hbase-client:0.98.1-cdh5.1.3"),
-        maven("org.apache.hbase:hbase-server:0.98.1-cdh5.1.3"),
-        maven("org.apache.zookeeper:zookeeper:3.4.5-cdh5.1.3"),
-        maven("org.apache.curator:curator-recipes:2.4.1"),
-    ],
-    maven_exclusions=[
-        # Globally exclude Hadoop MR1:
-        "org.apache.hadoop:hadoop-core:*:*:*",
-        "org.apache.hadoop:hadoop-hdfs:test-jar:*:*",
-    ],
-    provides=["kiji_platform"],
-)
+#java_library(
+#    name="//org/kiji/platforms:cdh5.1-platform",
+#    deps=[
+#        "//org/kiji/deps:jackson",
+#
+#        avro,
+#        maven(guava),
+#        maven(jsr305),
+#        maven(slf4j_api),
+#
+#        maven("org.apache.hadoop:hadoop-mapreduce-client-jobclient:2.3.0-cdh5.1.3"),
+#        maven("org.apache.hadoop:hadoop-mapreduce-client-app:2.3.0-cdh5.1.3"),
+#        maven("org.apache.hadoop:hadoop-common:2.3.0-cdh5.1.3"),
+#        maven("org.apache.hbase:hbase-client:0.98.1-cdh5.1.3"),
+#        maven("org.apache.hbase:hbase-server:0.98.1-cdh5.1.3"),
+#        maven("org.apache.zookeeper:zookeeper:3.4.5-cdh5.1.3"),
+#        maven("org.apache.curator:curator-recipes:2.4.1"),
+#    ],
+#    maven_exclusions=[
+#        # Globally exclude Hadoop MR1:
+#        "org.apache.hadoop:hadoop-core:*:*:*",
+#        "org.apache.hadoop:hadoop-hdfs:test-jar:*:*",
+#    ],
+#    provides=["kiji_platform"],
+#)
 
 java_library(
     name="//org/kiji/platforms:cdh5.2-platform",
@@ -558,7 +558,7 @@ java_library(
 
 java_library(
     name="//org/kiji/platforms:compile-platform",
-    deps=["//org/kiji/platforms:cdh5.1-platform"],
+    deps=["//org/kiji/platforms:cdh5.3-platform"],
 )
 
 
@@ -573,15 +573,15 @@ java_library(
 #     provides=["kiji_platform"],
 # )
 
-java_library(
-    name="//org/kiji/platforms:cdh4.2-test-platform",
-    deps=[
-        "//org/kiji/platforms:cdh4.2-platform",
-        maven("org.apache.hadoop:hadoop-minicluster:2.0.0-mr1-cdh4.2.2"),
-        maven("org.apache.curator:curator-test:2.4.1"),
-    ],
-    provides=["kiji_platform"],
-)
+#java_library(
+#    name="//org/kiji/platforms:cdh4.2-test-platform",
+#    deps=[
+#        "//org/kiji/platforms:cdh4.2-platform",
+#        maven("org.apache.hadoop:hadoop-minicluster:2.0.0-mr1-cdh4.2.2"),
+#        maven("org.apache.curator:curator-test:2.4.1"),
+#    ],
+#    provides=["kiji_platform"],
+#)
 
 # DEPRECATED. Uncomment if you need to use cdh4.
 # java_library(
@@ -605,51 +605,51 @@ java_library(
 #     provides=["kiji_platform"],
 # )
 
-java_library(
-    name="//org/kiji/platforms:cdh5.1-test-platform",
-    deps=[
-        # "//org/kiji/deps:jackson",  # still needed?
-        "//org/kiji/platforms:cdh5.1-platform",
-        maven(guava),
+#java_library(
+#    name="//org/kiji/platforms:cdh5.1-test-platform",
+#    deps=[
+#        # "//org/kiji/deps:jackson",  # still needed?
+#        "//org/kiji/platforms:cdh5.1-platform",
+#        maven(guava),
+#
+#        maven("org.apache.hadoop:hadoop-yarn-server-tests:test-jar:tests:2.3.0-cdh5.1.3"),
+#
+#        # for HBaseTestingUtility
+#        maven("org.apache.hbase:hbase-server:test-jar:tests:0.98.1-cdh5.1.3"),
+#
+#        # for HBaseCommonTestingUtility
+#        maven("org.apache.hbase:hbase-common:test-jar:tests:0.98.1-cdh5.1.3"),
+#
+#        maven("org.apache.curator:curator-test:2.4.1"),
+#    ],
+#    maven_exclusions=[
+#        # Globally exclude Hadoop MR1:
+#        "org.apache.hadoop:hadoop-core:*:*:*",
+#    ],
+#)
 
-        maven("org.apache.hadoop:hadoop-yarn-server-tests:test-jar:tests:2.3.0-cdh5.1.3"),
-
-        # for HBaseTestingUtility
-        maven("org.apache.hbase:hbase-server:test-jar:tests:0.98.1-cdh5.1.3"),
-
-        # for HBaseCommonTestingUtility
-        maven("org.apache.hbase:hbase-common:test-jar:tests:0.98.1-cdh5.1.3"),
-
-        maven("org.apache.curator:curator-test:2.4.1"),
-    ],
-    maven_exclusions=[
-        # Globally exclude Hadoop MR1:
-        "org.apache.hadoop:hadoop-core:*:*:*",
-    ],
-)
-
-java_library(
-    name="//org/kiji/platforms:cdh5.2-test-platform",
-    deps=[
-        # "//org/kiji/deps:jackson",  # still needed?
-        "//org/kiji/platforms:cdh5.2-platform",
-        maven(guava),
-
-        maven("org.apache.hadoop:hadoop-yarn-server-tests:test-jar:tests:2.5.0-cdh5.2.1"),
-
-        # for HBaseTestingUtility
-        maven("org.apache.hbase:hbase-server:test-jar:tests:0.98.6-cdh5.2.1"),
-
-        # for HBaseCommonTestingUtility
-        maven("org.apache.hbase:hbase-common:test-jar:tests:0.98.6-cdh5.2.1"),
-
-        maven("org.apache.curator:curator-test:2.4.1"),
-    ],
-    maven_exclusions=[
-        # Globally exclude Hadoop MR1:
-        "org.apache.hadoop:hadoop-core:*:*:*",
-    ],
-)
+#java_library(
+#    name="//org/kiji/platforms:cdh5.2-test-platform",
+#    deps=[
+#        # "//org/kiji/deps:jackson",  # still needed?
+#        "//org/kiji/platforms:cdh5.2-platform",
+#        maven(guava),
+#
+#        maven("org.apache.hadoop:hadoop-yarn-server-tests:test-jar:tests:2.5.0-cdh5.2.1"),
+#
+#        # for HBaseTestingUtility
+#        maven("org.apache.hbase:hbase-server:test-jar:tests:0.98.6-cdh5.2.1"),
+#
+#        # for HBaseCommonTestingUtility
+#        maven("org.apache.hbase:hbase-common:test-jar:tests:0.98.6-cdh5.2.1"),
+#
+#        maven("org.apache.curator:curator-test:2.4.1"),
+#    ],
+#    maven_exclusions=[
+#        # Globally exclude Hadoop MR1:
+#        "org.apache.hadoop:hadoop-core:*:*:*",
+#    ],
+#)
 
 java_library(
     name="//org/kiji/platforms:cdh5.3-test-platform",
@@ -685,7 +685,7 @@ java_library(
         maven("com.datastax.cassandra:cassandra-driver-core:2.1.4"),
         maven("org.apache.cassandra:cassandra-all:2.0.9"),
 
-        "//org/kiji/platforms:cdh5.1-platform",
+        "//org/kiji/platforms:cdh5.3-platform",
     ],
     maven_exclusions=[
         # Globally exclude Hadoop MR1:
@@ -695,7 +695,7 @@ java_library(
 
 java_library(
     name="//org/kiji/platforms:test-platform",
-    deps=["//org/kiji/platforms:cdh5.1-test-platform"],
+    deps=["//org/kiji/platforms:cdh5.3-test-platform"],
 )
 
 # --------------------------------------------------------------------------------------------------
@@ -1050,16 +1050,16 @@ java_library(
 #     ],
 # )
 # DEPRECATED. Uncomment if you need to use cdh4.
-java_library(
-    name="//org/kiji/schema:cdh42mr1-bridge",
-    sources=["//kiji-schema/cdh42mr1-bridge/src/main/java"],
-    resources=["//kiji-schema/cdh42mr1-bridge/src/main/resources/"],
-    deps=[
-        "//org/kiji/annotations:annotations",
-        "//org/kiji/schema:schema-platform-api",
-        dynamic(kiji_platform="//org/kiji/platforms:cdh4.2-platform"),
-    ],
-)
+#java_library(
+#    name="//org/kiji/schema:cdh42mr1-bridge",
+#    sources=["//kiji-schema/cdh42mr1-bridge/src/main/java"],
+#    resources=["//kiji-schema/cdh42mr1-bridge/src/main/resources/"],
+#    deps=[
+#        "//org/kiji/annotations:annotations",
+#        "//org/kiji/schema:schema-platform-api",
+#        dynamic(kiji_platform="//org/kiji/platforms:cdh4.2-platform"),
+#    ],
+#)
 
 java_library(
     name="//org/kiji/schema:cdh5-bridge",
@@ -1069,7 +1069,7 @@ java_library(
         "//org/kiji/annotations:annotations",
         "//org/kiji/schema:schema-platform-api",
 
-        dynamic(kiji_platform="//org/kiji/platforms:cdh5.1-platform"),
+        dynamic(kiji_platform="//org/kiji/platforms:cdh5.3-platform"),
     ],
     checkstyle=checkstyle_kiji,
 )
@@ -1145,14 +1145,14 @@ java_binary(
 #     ],
 # )
 # DEPRECATED. Uncomment if you need to use cdh4.
-java_binary(
-    name="//org/kiji/schema:kiji-cdh4.2",
-    main_class="org.kiji.schema.tools.KijiToolLauncher",
-    deps=[
-        "//org/kiji/schema:kiji-schema",
-        dynamic(kiji_platform="//org/kiji/platforms:cdh4.2-platform"),
-    ],
-)
+#java_binary(
+#    name="//org/kiji/schema:kiji-cdh4.2",
+#    main_class="org.kiji.schema.tools.KijiToolLauncher",
+#    deps=[
+#        "//org/kiji/schema:kiji-schema",
+#        dynamic(kiji_platform="//org/kiji/platforms:cdh4.2-platform"),
+#    ],
+#)
 # DEPRECATED. Uncomment if you need to use cdh4.
 # java_binary(
 #     name="//org/kiji/schema:kiji-cdh4.3",
@@ -1172,32 +1172,32 @@ java_binary(
 #     ],
 # )
 
-java_binary(
-    name="//org/kiji/schema:kiji-cdh5.0",
-    main_class="org.kiji.schema.tools.KijiToolLauncher",
-    deps=[
-        "//org/kiji/schema:kiji-schema",
-        dynamic(kiji_platform="//org/kiji/platforms:cdh5.0-platform"),
-    ],
-)
-
-java_binary(
-    name="//org/kiji/schema:kiji-cdh5.1",
-    main_class="org.kiji.schema.tools.KijiToolLauncher",
-    deps=[
-        "//org/kiji/schema:kiji-schema",
-        dynamic(kiji_platform="//org/kiji/platforms:cdh5.1-platform"),
-    ],
-)
-
-java_binary(
-    name="//org/kiji/schema:kiji-cdh5.2",
-    main_class="org.kiji.schema.tools.KijiToolLauncher",
-    deps=[
-        "//org/kiji/schema:kiji-schema",
-        dynamic(kiji_platform="//org/kiji/platforms:cdh5.2-platform"),
-    ],
-)
+#java_binary(
+#    name="//org/kiji/schema:kiji-cdh5.0",
+#    main_class="org.kiji.schema.tools.KijiToolLauncher",
+#    deps=[
+#        "//org/kiji/schema:kiji-schema",
+#        dynamic(kiji_platform="//org/kiji/platforms:cdh5.0-platform"),
+#    ],
+#)
+#
+#java_binary(
+#    name="//org/kiji/schema:kiji-cdh5.1",
+#    main_class="org.kiji.schema.tools.KijiToolLauncher",
+#    deps=[
+#        "//org/kiji/schema:kiji-schema",
+#        dynamic(kiji_platform="//org/kiji/platforms:cdh5.1-platform"),
+#    ],
+#)
+#
+#java_binary(
+#    name="//org/kiji/schema:kiji-cdh5.2",
+#    main_class="org.kiji.schema.tools.KijiToolLauncher",
+#    deps=[
+#        "//org/kiji/schema:kiji-schema",
+#        dynamic(kiji_platform="//org/kiji/platforms:cdh5.2-platform"),
+#    ],
+#)
 
 java_binary(
     name="//org/kiji/schema:kiji-cdh5.3",
@@ -1462,7 +1462,7 @@ java_library(
         "//org/kiji/delegation:kiji-delegation",
         "//org/kiji/mapreduce:platform-api",
 
-        dynamic(kiji_platform="//org/kiji/platforms:cdh5.1-platform"),
+        dynamic(kiji_platform="//org/kiji/platforms:cdh5.3-platform"),
     ],
     checkstyle=checkstyle_kiji,
 )
