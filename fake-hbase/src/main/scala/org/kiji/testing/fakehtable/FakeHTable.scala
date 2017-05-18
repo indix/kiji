@@ -430,12 +430,12 @@ class FakeHTable(
         if (rowQualifierMap != null) {
           for (kv <- kvs.asScala) {
             require(kv.isDelete)
-            if (kv.isDeleteFamily) {
+            if (CellUtil.isDeleteFamily(kv)) {
               // Removes versions of an entire family prior to the specified timestamp:
               for ((qualifier, series) <- rowQualifierMap.asScala) {
                 series.subMap(kv.getTimestamp, true, 0, true).clear()
               }
-            } else if (kv.isDeleteColumnOrFamily) {
+            } else if (CellUtil.isDeleteColumnOrFamily(kv)) {
               // Removes versions of a column prior to the specified timestamp:
               val series = rowQualifierMap.get(kv.getQualifier)
               if (series != null) {
@@ -688,7 +688,7 @@ class FakeHTable(
     val map = new JTreeMap[HRegionInfo, ServerName]()
     synchronized {
       for (region <- regions) {
-        map.put(region.getRegionInfo, new ServerName(region.getHostname, region.getPort, 0))
+        map.put(region.getRegionInfo, ServerName.valueOf(region.getHostname, region.getPort, 0))
       }
     }
     return map
@@ -1021,6 +1021,10 @@ class FakeHTable(
   override def batchCoprocessorService[R <: com.google.protobuf.Message](x$1: com.google.protobuf.Descriptors.MethodDescriptor,x$2: com.google.protobuf.Message,x$3: Array[Byte],x$4: Array[Byte],x$5: R,x$6: org.apache.hadoop.hbase.client.coprocessor.Batch.Callback[R]): Unit = ???
   override def batchCoprocessorService[R <: com.google.protobuf.Message](x$1: com.google.protobuf.Descriptors.MethodDescriptor,x$2: com.google.protobuf.Message,x$3: Array[Byte],x$4: Array[Byte],x$5: R): java.util.Map[Array[Byte],R] = ???
   override def checkAndMutate(x$1: Array[Byte],x$2: Array[Byte],x$3: Array[Byte],x$4: org.apache.hadoop.hbase.filter.CompareFilter.CompareOp,x$5: Array[Byte],x$6: org.apache.hadoop.hbase.client.RowMutations): Boolean = ???
+  override def checkAndDelete(x$1: Array[Byte],x$2: Array[Byte],x$3: Array[Byte],x$4: org.apache.hadoop.hbase.filter.CompareFilter.CompareOp,x$5: Array[Byte],x$6: org.apache.hadoop.hbase.client.Delete): Boolean = ???
+  override def checkAndPut(x$1: Array[Byte],x$2: Array[Byte],x$3: Array[Byte],x$4: org.apache.hadoop.hbase.filter.CompareFilter.CompareOp,x$5: Array[Byte],x$6: org.apache.hadoop.hbase.client.Put): Boolean = ???
+  override def existsAll(x$1: java.util.List[org.apache.hadoop.hbase.client.Get]): Array[Boolean] = ???
+
 
 
 }

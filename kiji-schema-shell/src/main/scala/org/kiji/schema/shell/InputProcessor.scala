@@ -208,7 +208,7 @@ final class InputProcessor(val throwOnErr: Boolean = false) {
    */
   private def printPages(text: String, env: Environment): Unit = {
    val terminal = new UnixTerminal
-   val termHeight = terminal.getTerminalHeight() - 1
+   val termHeight = terminal.getHeight() - 1
    // Default page height of 24 lines if can't determine from stty.
    val pageHeight = if (termHeight < 1) { 24 } else { termHeight };
    var i = 0;

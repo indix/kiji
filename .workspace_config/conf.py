@@ -23,7 +23,7 @@ maven_repositories = [
 java_versions = {"1.8.0_121", "1.7.0_80"}
 
 # Supported Python versions:
-python_versions = {"3.5.2"}
+python_versions = {"3.5.2", "2.7.12"}
 
 
 avro_version = "1.7.6"

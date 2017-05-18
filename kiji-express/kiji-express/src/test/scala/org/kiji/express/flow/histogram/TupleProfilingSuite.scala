@@ -128,7 +128,7 @@ class TupleProfilingSuite extends KijiSuite {
           .finish
 
       // Validate the resulting csv file.
-      ResourceUtil.doAndClose(io.Source.fromFile(tempFile))({ source =>
+      ResourceUtil.doAndClose(scala.io.Source.fromFile(tempFile))({ source =>
         val tempFileLines: Seq[String] = source.getLines().toList
         val expectedFile = Seq(
             "bin-id,lower-bound,upper-bound,value",
@@ -162,7 +162,7 @@ class TupleProfilingSuite extends KijiSuite {
           .finish
 
       // Validate the resulting csv file.
-      ResourceUtil.doAndClose(io.Source.fromFile(tempFile))({ source =>
+      ResourceUtil.doAndClose(scala.io.Source.fromFile(tempFile))({ source =>
         val tempFileLines: Seq[String] = source.getLines().toList
         val expectedFile = Seq(
             "bin-id,lower-bound,upper-bound,value",

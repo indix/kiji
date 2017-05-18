@@ -140,7 +140,8 @@ public class TestKijiHFileOutputFormat {
     final List<KeyValue> kvs = Lists.newArrayListWithCapacity((int) reader.getEntries());
     boolean hasNext = scanner.seekTo();
     while (hasNext) {
-      kvs.add(scanner.getKeyValue());
+      KeyValue cell = new KeyValue(scanner.getKeyValue());
+      kvs.add(cell);
       hasNext = scanner.next();
     }
     reader.close();
